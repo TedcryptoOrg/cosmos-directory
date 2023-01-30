@@ -8,6 +8,12 @@ This library is split into three components:
  - `ValidatorDirectory` - Get information about a validator
  - `CosmosDirectory` - Get proxy endpoints to communicate with cosmos chains (e.g.: RPC and REST endpoints) 
 
+## Install
+
+```shell
+npm install @cosmos/directory
+```
+
 ## How to use
 
 ```js
