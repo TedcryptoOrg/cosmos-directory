@@ -17,4 +17,4 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
-      - run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}" && npm publish
+      - run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}" && npm publish --access public
