@@ -1,6 +1,6 @@
 {
   "name": "@tedcryptoorg/cosmos-directory",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cosmos Directory in Typescript",
   "scripts": {
     "compile": "tsc",
