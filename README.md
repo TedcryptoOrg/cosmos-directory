@@ -19,13 +19,16 @@ npm i @tedcryptoorg/cosmos-directory
 ```js
 import { ChainDirectory } from '@tedcryptoorg/cosmos-directory'
 
+// Build your service
+const chainDirectory = new ChainDirectory(false); // For testnet use true
+
 // Get all chains
-ChainDirectory.getAllChains().then((data) => {
+chainDirectory.getAllChains().then((data) => {
   console.log(data)
 })
 
 // Get a specific chain
-ChainDirectory.getChainData('cosmoshub').then((data) => {
+chainDirectory.getChainData('cosmoshub').then((data) => {
   console.log(data)
 })
 ```
@@ -33,13 +36,16 @@ ChainDirectory.getChainData('cosmoshub').then((data) => {
 ```js
 import { ValidatorDirectory } from '@tedcryptoorg/cosmos-directory'
 
+// Build your service
+const validatorDirectory = new ValidatorDirectory(false); // For testnet use true
+
 // Get a validators from a chain
-ValidatorDirectory.getValidators('cosmoshub').then((data) => {
+validatorDirectory.getValidators('cosmoshub').then((data) => {
   console.log(data)
 })
 
 // Get registry information about a validator using their name
-ValidatorDirectory.getRegistryValidator('tedcrypto').then((data) => {
+validatorDirectory.getRegistryValidator('tedcrypto').then((data) => {
   console.log(data)
 })
 ```
