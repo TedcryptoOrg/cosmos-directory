@@ -1,6 +1,6 @@
 {
   "name": "@tedcryptoorg/cosmos-directory",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Cosmos Directory in Typescript",
   "scripts": {
     "test": "jest",
@@ -29,7 +29,6 @@
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
   "dependencies": {
-    "@tedcryptoorg/cosmos-directory": "^0.0.2",
     "axios": "^1.2.5",
     "compare-versions": "^6.0.0-rc.1",
     "cosmjs-types": "^0.6.1",

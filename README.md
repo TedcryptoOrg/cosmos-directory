@@ -11,13 +11,13 @@ This library is split into three components:
 ## Install
 
 ```shell
-npm install @cosmos/directory
+npm i @tedcryptoorg/cosmos-directory
 ```
 
 ## How to use
 
 ```js
-import ChainDirectory from '@cosmos/directory'
+import { ChainDirectory } from '@tedcryptoorg/cosmos-directory'
 
 // Get all chains
 ChainDirectory.getAllChains().then((data) => {
@@ -31,7 +31,7 @@ ChainDirectory.getChainData('cosmoshub').then((data) => {
 ```
 
 ```js
-import ValidatorDirectory from '@cosmos/directory'
+import { ValidatorDirectory } from '@tedcryptoorg/cosmos-directory'
 
 // Get a validators from a chain
 ValidatorDirectory.getValidators('cosmoshub').then((data) => {
