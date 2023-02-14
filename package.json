@@ -1,12 +1,11 @@
 {
   "name": "@tedcryptoorg/cosmos-directory",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Cosmos Directory in Typescript",
   "scripts": {
     "test": "jest",
     "clean": "rm -rf ./lib",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
+    "build": "npm run clean && npm run build:cjs",
     "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
     "prepack": "npm run build"
   },
@@ -14,18 +13,6 @@
   "author": "Josh_Lopes<josluis.lopes@gmail.com>",
   "license": "MIT",
   "repository": "https://github.com/TedcryptoOrg/cosmos-directory",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./lib/esm/types/index.d.ts",
-        "default": "./lib/esm/index.mjs"
-      },
-      "require": {
-        "types": "./lib/cjs/types/index.d.ts",
-        "default": "./lib/cjs/index.js"
-      }
-    }
-  },
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
   "dependencies": {
