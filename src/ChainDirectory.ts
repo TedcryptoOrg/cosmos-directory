@@ -1,8 +1,8 @@
 import BaseDirectory from "./BaseDirectory";
 import axios from 'axios'
-import {ChainResponse} from "./types/ChainResponse";
-import {ChainsResponse} from "./types/ChainsResponse";
-import {AssetsResponse} from "./types/AssetsResponse";
+import {ChainResponse} from "./types/ChainDirectory/ChainResponse";
+import {ChainsResponse} from "./types/ChainDirectory/ChainsResponse";
+import {AssetsResponse} from "./types/ChainDirectory/AssetsResponse";
 
 export default class ChainDirectory extends BaseDirectory {
     private url: string;
