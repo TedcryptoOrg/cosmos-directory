@@ -8,22 +8,23 @@ describe('Integrate test ChainDirectory', () => {
 
     it('should return correct chains data', async () => {
         const result = await chainDirectory.getChains();
+        expect(result.repository.url).toBe('https://github.com/eco-stake/chain-registry');
         // assert some element
-        expect(result['cosmoshub']).toHaveProperty('path');
-        expect(result['cosmoshub'].chain_id).toBe('cosmoshub-4');
-        // assert some element
-        expect(result['evmos']).toHaveProperty('path');
-        expect(result['evmos'].chain_id).toBe('evmos_9001-2');
+        expect(result.chains[0]).toHaveProperty('path');
+        expect(result.chains[0]).toHaveProperty('chain_id');
     });
 
     it('should return correct chain data', async () => {
         const result = await chainDirectory.getChainData('cosmoshub');
-        expect(result).toHaveProperty('path');
-        expect(result.chain_id).toBe('cosmoshub-4');
+        expect(result.chain.chain_id).toBe('cosmoshub-4');
+
+        expect((await chainDirectory.getChainData('evmos')).chain.chain_id).toBe('evmos_9001-2');
+        expect((await chainDirectory.getChainData('juno')).chain.chain_id).toBe('juno-1');
     });
 
     it('should return correct token data', async () => {
         const result = await chainDirectory.getTokenData('cosmoshub');
+        expect(result.chain_name).toBe('cosmoshub');
         expect(result.assets).toEqual([
             {
                 'base': 'uatom',
