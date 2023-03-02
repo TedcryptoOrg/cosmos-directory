@@ -22,7 +22,7 @@ describe('ValidatorsDirectory', () => {
         it('should return validator data', async () => {
             const validator = { name: 'validator1', address: 'address1' };
             (axios.get as jest.Mock).mockResolvedValue({ data: { validator } });
-            const result = await validatorsDirectory.getRegistryValidator('validator1');
+            const result = await validatorsDirectory.getValidator('validator1');
             expect(result).toEqual(validator);
         });
     });

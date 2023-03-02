@@ -18,34 +18,39 @@ npm i @tedcryptoorg/cosmos-directory
 
 ```js
 import { ChainDirectory } from '@tedcryptoorg/cosmos-directory'
+import { ChainsResponse, ChainResponse, Chain } from '@tedcryptoorg/cosmos-directory/dist/types'
 
 // Build your service
-const chainDirectory = new ChainDirectory(false); // For testnet use true
+const chainDirectory = new ChainDirectory();
 
 // Get all chains
-chainDirectory.getAllChains().then((data) => {
-  console.log(data)
+chainDirectory.getAllChains().then((data: ChainsResponse) => {
+    data.chains.forEach((chain: Chain) => {
+        console.log(chain)
+    });
 })
 
 // Get a specific chain
-chainDirectory.getChainData('cosmoshub').then((data) => {
-  console.log(data)
+chainDirectory.getChainData('cosmoshub').then((data: ChainResponse) => {
+  console.log(data);
+  console.log(data.chain.assets)
 })
 ```
 
 ```js
 import { ValidatorDirectory } from '@tedcryptoorg/cosmos-directory'
+import { ValidatorResponse, ChainValidatorResponse } from '@tedcryptoorg/cosmos-directory/dist/types'
 
 // Build your service
 const validatorDirectory = new ValidatorDirectory(false); // For testnet use true
 
 // Get a validators from a chain
-validatorDirectory.getValidators('cosmoshub').then((data) => {
+validatorDirectory.getValidators('cosmoshub').then((data: ChainValidatorResponse) => {
   console.log(data)
 })
 
 // Get registry information about a validator using their name
-validatorDirectory.getRegistryValidator('tedcrypto').then((data) => {
-  console.log(data)
+validatorDirectory.getValidator('tedcrypto').then((data: ValidatorResponse) => {
+  console.log(data.validator.name); // Tedcrypto
 })
 ```

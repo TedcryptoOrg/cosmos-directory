@@ -1,4 +1,4 @@
-import {Repository} from "./Repository";
+import {Repository} from "../Repository";
 import {Chain} from "./Chain";
 
 export type ChainsResponse = {
