@@ -14,28 +14,39 @@ describe('ValidatorsDirectory', () => {
             const validators = [{ name: 'validator1', address: 'address1' }, { name: 'validator2', address: 'address2' }];
             (axios.get as jest.Mock).mockResolvedValue({ data: { validators } });
             const result = await validatorsDirectory.getValidators('chain1');
-            expect(result).toEqual(validators);
+            expect(result).toEqual({validators: validators});
         });
     });
 
-    describe('getRegistryValidator', () => {
+    describe('getValidator', () => {
         it('should return validator data', async () => {
             const validator = { name: 'validator1', address: 'address1' };
             (axios.get as jest.Mock).mockResolvedValue({ data: { validator } });
             const result = await validatorsDirectory.getValidator('validator1');
-            expect(result).toEqual(validator);
+            expect(result).toEqual({validator: validator});
         });
     });
 
     describe('getOperatorAddresses', () => {
         it('should return operator addresses', async () => {
-            const validators = [{
-                name: 'validator1',
-                chains: [{ name: 'chain1', address: 'address1', restake: '10' }, { name: 'chain2', address: 'address2', restake: '20' }]
-            }, {
-                name: 'validator2',
-                chains: [{ name: 'chain1', address: 'address3', restake: '30' }, { name: 'chain2', address: 'address4', restake: '40' }]
-            }];
+            const validators = {
+                validators: [
+                    {
+                        name: 'validator1',
+                        chains: [
+                            { name: 'chain1', address: 'address1', restake: '10' },
+                            { name: 'chain2', address: 'address2', restake: '20' }
+                        ]
+                    },
+                    {
+                        name: 'validator2',
+                        chains: [
+                            {name: 'chain1', address: 'address3', restake: '30'},
+                            {name: 'chain2', address: 'address4', restake: '40'}
+                        ]
+                    }
+                ]
+            };
             (axios.get as jest.Mock).mockResolvedValue({ data: validators });
             const result = await validatorsDirectory.getOperatorAddresses();
             expect(result).toEqual({

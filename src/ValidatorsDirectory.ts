@@ -3,6 +3,8 @@ import axios from "axios";
 import {ValidatorsResponse} from "./types/ValidatorDirectory/ValidatorsResponse";
 import {ValidatorResponse} from "./types/ValidatorDirectory/ValidatorResponse";
 import {ChainValidatorResponse} from "./types/ValidatorDirectory/ChainValidatorResponse";
+import {ValidatorChain} from "./types/ValidatorDirectory/ValidatorChain";
+import {Validator} from "./types/ValidatorDirectory/Validator";
 
 export default class ValidatorsDirectory extends BaseDirectory {
     private url: string;
@@ -30,15 +32,18 @@ export default class ValidatorsDirectory extends BaseDirectory {
     getOperatorAddresses(): Promise<any> {
         return this.getAllValidators()
             .then(data => data.validators ? data.validators : [])
-            .then(data => data.reduce((sum: any, validator: any) => {
-                validator.chains.forEach((chain: any) => {
-                    sum[chain.name] = sum[chain.name] || {}
-                    if(chain.restake){
-                        sum[chain.name][chain.address] = chain.restake
-                    }
-                })
+            .then(data => {
+                const aggregator = {};
+                data.forEach((validator: Validator) => {
+                    validator.chains.forEach((chain: ValidatorChain) => {
+                        aggregator[chain.name] = aggregator[chain.name] || {}
+                        if(chain.restake){
+                            aggregator[chain.name][chain.address] = chain.restake
+                        }
+                    })
+                });
 
-                return sum
-            }))
+                return aggregator;
+            })
     }
 }

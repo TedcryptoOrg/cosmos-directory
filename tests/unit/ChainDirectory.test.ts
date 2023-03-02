@@ -11,10 +11,20 @@ describe('ChainDirectory', () => {
 
     describe('getChains', () => {
         it('should return chains data', async () => {
-            const chains = [{ path: 'chain1', name: 'Chain 1' }, { path: 'chain2', name: 'Chain 2' }];
-            (axios.get as jest.Mock).mockResolvedValue({ data: chains });
+            const chains = [
+                { path: 'chain1', name: 'Chain 1' }, 
+                { path: 'chain2', name: 'Chain 2' }
+            ];
+            (axios.get as jest.Mock).mockResolvedValue({ data: {
+                chains: chains
+            } });
             const result = await chainDirectory.getChains();
-            expect(result).toEqual({ 'chain1': { path: 'chain1', name: 'Chain 1' }, 'chain2': { path: 'chain2', name: 'Chain 2' } });
+            expect(result).toEqual({
+                chains: [
+                        {path: 'chain1', name: 'Chain 1'},
+                        {path: 'chain2', name: 'Chain 2'}
+                ]
+            });
         });
     });
 
@@ -23,7 +33,7 @@ describe('ChainDirectory', () => {
             const chain = { path: 'chain1', name: 'Chain 1' };
             (axios.get as jest.Mock).mockResolvedValue({ data: { chain } });
             const result = await chainDirectory.getChainData('chain1');
-            expect(result).toEqual(chain);
+            expect(result).toEqual({chain: chain});
         });
     });
 
