@@ -1,5 +1,8 @@
 import BaseDirectory from "./BaseDirectory";
 import axios from 'axios'
+import {ChainResponse} from "./types/ChainDirectory/ChainResponse";
+import {ChainsResponse} from "./types/ChainDirectory/ChainsResponse";
+import {AssetsResponse} from "./types/ChainDirectory/AssetsResponse";
 
 export default class ChainDirectory extends BaseDirectory {
     private url: string;
@@ -10,19 +13,17 @@ export default class ChainDirectory extends BaseDirectory {
         this.url = this.protocol + `://chains.` + this.domain
     }
 
-    getChains(): Promise<any> {
+    getChains(): Promise<ChainsResponse> {
         return axios.get(this.url)
             .then(res => res.data)
-            .then(data => Array.isArray(data) ? data : data.chains) // deprecate
-            .then(data => data.reduce((a: any, v: any) => ({ ...a, [v.path]: v }), {}))
     }
 
-    getChainData(name: string): Promise<any> {
+    getChainData(name: string): Promise<ChainResponse> {
         return axios.get([this.url, name].join('/'))
-            .then(res => res.data.chain)
+            .then(res => res.data)
     }
 
-    getTokenData(name: string): Promise<any> {
+    getTokenData(name: string): Promise<AssetsResponse> {
         return axios.get([this.url, name, 'assetlist'].join('/'))
             .then(res => res.data)
     }
