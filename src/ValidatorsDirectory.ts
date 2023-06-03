@@ -5,6 +5,13 @@ import {ValidatorResponse} from "./types/ValidatorDirectory/ValidatorResponse";
 import {ChainValidatorResponse} from "./types/ValidatorDirectory/ChainValidatorResponse";
 import {ValidatorChain} from "./types/ValidatorDirectory/ValidatorChain";
 import {Validator} from "./types/ValidatorDirectory/Validator";
+import {Restake} from "./types/ValidatorDirectory/Restake";
+
+type Aggregator = {
+    [chainName: string]: {
+        [address: string]: Restake
+    }
+}
 
 export default class ValidatorsDirectory extends BaseDirectory {
     private url: string;
@@ -33,7 +40,7 @@ export default class ValidatorsDirectory extends BaseDirectory {
         return this.getAllValidators()
             .then(data => data.validators ? data.validators : [])
             .then(data => {
-                const aggregator = {};
+                const aggregator: Aggregator = {};
                 data.forEach((validator: Validator) => {
                     validator.chains.forEach((chain: ValidatorChain) => {
                         aggregator[chain.name] = aggregator[chain.name] || {}
