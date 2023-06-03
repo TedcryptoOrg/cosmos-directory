@@ -8,7 +8,7 @@ describe('Integrate test ChainDirectory', () => {
 
     it('should return correct chains data', async () => {
         const result = await chainDirectory.getChains();
-        expect(result.repository.url).toBe('https://github.com/eco-stake/chain-registry');
+        expect(result.repository.url).toBe('https://github.com/cosmos/chain-registry');
         // assert some element
         expect(result.chains[0]).toHaveProperty('path');
         expect(result.chains[0]).toHaveProperty('chain_id');
