@@ -1,4 +1,5 @@
 import {ValidatorSlash} from "./ValidatorSlash";
+import {Restake} from "./Restake";
 
 export type ValidatorChain = {
     name: string,
@@ -33,11 +34,7 @@ export type ValidatorChain = {
     rank: number,
     slashes: ValidatorSlash[],
     image: string,
-    restake: {
-        address: string,
-        run_time: string|string[],
-        minimum_reward: string,
-    },
+    restake: Restake,
     missed_blocks_periods: {
         blocks: number,
         missed: number
