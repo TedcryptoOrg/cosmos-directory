@@ -7,7 +7,7 @@ import {AssetsResponse} from "./types/ChainDirectory/AssetsResponse";
 export default class ChainDirectory extends BaseDirectory {
     private url: string;
 
-    constructor(testnet: boolean) {
+    constructor(testnet: boolean = false) {
         super(testnet);
 
         this.url = this.protocol + `://chains.` + this.domain
