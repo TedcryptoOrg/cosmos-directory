@@ -16,7 +16,7 @@ type Aggregator = {
 export default class ValidatorsDirectory extends BaseDirectory {
     private url: string;
 
-    constructor(testnet: boolean) {
+    constructor(testnet: boolean = false) {
         super(testnet);
         
         this.url = this.protocol + `://validators.` + this.domain
