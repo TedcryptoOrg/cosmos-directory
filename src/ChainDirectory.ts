@@ -4,6 +4,9 @@ import {ChainResponse} from "./types/ChainDirectory/ChainResponse";
 import {ChainsResponse} from "./types/ChainDirectory/ChainsResponse";
 import {AssetsResponse} from "./types/ChainDirectory/AssetsResponse";
 
+jest.retryTimes(3);
+jest.setTimeout(60000);
+
 export default class ChainDirectory extends BaseDirectory {
     private url: string;
 
