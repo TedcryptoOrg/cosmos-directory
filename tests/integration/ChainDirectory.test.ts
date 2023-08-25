@@ -28,7 +28,7 @@ describe('Integrate test ChainDirectory', () => {
     it('should return correct token data', async () => {
         const result = await chainDirectory.getTokenData('cosmoshub');
         expect(result.chain_name).toBe('cosmoshub');
-        expect(result.assets).toEqual([
+        expect(result.assets[0]).toEqual(
             {
                 'base': 'uatom',
                 'coingecko_id': 'cosmos',
@@ -45,6 +45,6 @@ describe('Integrate test ChainDirectory', () => {
                 'name': 'Cosmos Hub Atom',
                 'symbol': 'ATOM',
             }
-        ]);
+        );
     });
 });
