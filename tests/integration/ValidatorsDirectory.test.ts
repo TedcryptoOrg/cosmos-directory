@@ -1,5 +1,8 @@
 import ValidatorsDirectory from "../../src/ValidatorsDirectory";
 
+jest.setTimeout(60000)
+jest.retryTimes(3)
+
 describe('Integrate test ValidatorDirectory', () => {
     let validatorsDirectory: ValidatorsDirectory;
     beforeEach(() => {

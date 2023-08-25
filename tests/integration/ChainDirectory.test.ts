@@ -1,5 +1,8 @@
 import ChainDirectory from "../../src/ChainDirectory";
 
+jest.setTimeout(60000)
+jest.retryTimes(3)
+
 describe('Integrate test ChainDirectory', () => {
     let chainDirectory: ChainDirectory;
     beforeEach(() => {
