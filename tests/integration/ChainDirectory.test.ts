@@ -38,6 +38,12 @@ describe('Integrate test ChainDirectory', () => {
                 ],
                 'description': 'The native staking and governance token of the Cosmos Hub.',
                 'display': 'atom',
+                "images": [
+                    {
+                        "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.png",
+                        "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.svg",
+                    }
+                ],
                 'logo_URIs': {
                     'png': 'https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.png',
                     'svg': 'https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.svg',
