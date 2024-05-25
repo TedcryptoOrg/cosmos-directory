@@ -7,6 +7,7 @@ module.exports = [
             'jest.config.ts',
             'babel.config.js',
             'tests/**/*',
+            'lib/**/*',
         ],
         languageOptions:{
             ...love.languageOptions,

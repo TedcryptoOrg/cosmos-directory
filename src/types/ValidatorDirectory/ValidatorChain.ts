@@ -34,7 +34,7 @@ export interface ValidatorChain {
   rank: number
   slashes: ValidatorSlash[]
   image: string
-  restake: Restake
+  restake?: Restake
   missed_blocks_periods: Array<{
     blocks: number
     missed: number

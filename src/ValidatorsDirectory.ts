@@ -34,13 +34,13 @@ export default class ValidatorsDirectory extends BaseDirectory {
 
   async getOperatorAddresses (): Promise<any> {
     return await this.getAllValidators()
-      .then(data => data.validators ? data.validators : [])
+      .then(data => data.validators ?? [])
       .then(data => {
         const aggregator: Aggregator = {}
         data.forEach((validator: Validator) => {
           validator.chains.forEach((chain: ValidatorChain) => {
-            aggregator[chain.name] = aggregator[chain.name] || {}
-            if (chain.restake) {
+            aggregator[chain.name] = aggregator[chain.name] ?? {}
+            if (chain.restake !== undefined) {
               aggregator[chain.name][chain.address] = chain.restake
             }
           })
