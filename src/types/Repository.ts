@@ -1,6 +1,6 @@
-export type Repository = {
-    url: string,
-    branch: string,
-    commit: string,
-    timestamp: number,
+export interface Repository {
+  url: string
+  branch: string
+  commit: string
+  timestamp: number
 }
