@@ -1,6 +1,6 @@
-import {Asset} from "./Asset";
+import { type Asset } from './Asset'
 
-export type AssetsResponse = {
-  chain_name: string,
-  assets: Asset[];
-};
+export interface AssetsResponse {
+  chain_name: string
+  assets: Asset[]
+}

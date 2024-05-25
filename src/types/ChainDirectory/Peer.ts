@@ -1,5 +1,5 @@
-export type Peer = {
-    id?: string,
-    address?: string,
-    provider?: string,
+export interface Peer {
+  id?: string
+  address?: string
+  provider?: string
 }

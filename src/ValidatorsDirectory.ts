@@ -1,56 +1,52 @@
-import BaseDirectory from "./BaseDirectory";
-import axios from "axios";
-import {ValidatorsResponse} from "./types/ValidatorDirectory/ValidatorsResponse";
-import {ValidatorResponse} from "./types/ValidatorDirectory/ValidatorResponse";
-import {ChainValidatorResponse} from "./types/ValidatorDirectory/ChainValidatorResponse";
-import {ValidatorChain} from "./types/ValidatorDirectory/ValidatorChain";
-import {Validator} from "./types/ValidatorDirectory/Validator";
-import {Restake} from "./types/ValidatorDirectory/Restake";
+import BaseDirectory from './BaseDirectory'
+import axios from 'axios'
+import { type ValidatorsResponse } from './types/ValidatorDirectory/ValidatorsResponse'
+import { type ValidatorResponse } from './types/ValidatorDirectory/ValidatorResponse'
+import { type ChainValidatorResponse } from './types/ValidatorDirectory/ChainValidatorResponse'
+import { type ValidatorChain } from './types/ValidatorDirectory/ValidatorChain'
+import { type Validator } from './types/ValidatorDirectory/Validator'
+import { type Restake } from './types/ValidatorDirectory/Restake'
 
-type Aggregator = {
-    [chainName: string]: {
-        [address: string]: Restake
-    }
-}
+type Aggregator = Record<string, Record<string, Restake>>
 
 export default class ValidatorsDirectory extends BaseDirectory {
-    private url: string;
+  private readonly url: string
 
-    constructor(testnet: boolean = false) {
-        super(testnet);
-        
-        this.url = this.protocol + `://validators.` + this.domain
-    }
+  constructor (testnet: boolean = false) {
+    super(testnet)
 
-    getAllValidators(): Promise<ValidatorsResponse> {
-        return axios.get(this.url).then(res => res.data);
-    }
+    this.url = this.protocol + '://validators.' + this.domain
+  }
 
-    getValidators(chainName: string): Promise<ChainValidatorResponse> {
-        return axios.get(this.url + '/chains/' + chainName)
-            .then(res => res.data)
-    }
+  async getAllValidators (): Promise<ValidatorsResponse> {
+    return await axios.get(this.url).then(res => res.data)
+  }
 
-    getValidator(validatorName: string): Promise<ValidatorResponse> {
-        return axios.get(this.url + '/' + validatorName)
-            .then(res => res.data)
-    }
+  async getValidators (chainName: string): Promise<ChainValidatorResponse> {
+    return await axios.get(this.url + '/chains/' + chainName)
+      .then(res => res.data)
+  }
 
-    getOperatorAddresses(): Promise<any> {
-        return this.getAllValidators()
-            .then(data => data.validators ? data.validators : [])
-            .then(data => {
-                const aggregator: Aggregator = {};
-                data.forEach((validator: Validator) => {
-                    validator.chains.forEach((chain: ValidatorChain) => {
-                        aggregator[chain.name] = aggregator[chain.name] || {}
-                        if(chain.restake){
-                            aggregator[chain.name][chain.address] = chain.restake
-                        }
-                    })
-                });
+  async getValidator (validatorName: string): Promise<ValidatorResponse> {
+    return await axios.get(this.url + '/' + validatorName)
+      .then(res => res.data)
+  }
 
-                return aggregator;
-            })
-    }
+  async getOperatorAddresses (): Promise<any> {
+    return await this.getAllValidators()
+      .then(data => data.validators ? data.validators : [])
+      .then(data => {
+        const aggregator: Aggregator = {}
+        data.forEach((validator: Validator) => {
+          validator.chains.forEach((chain: ValidatorChain) => {
+            aggregator[chain.name] = aggregator[chain.name] || {}
+            if (chain.restake) {
+              aggregator[chain.name][chain.address] = chain.restake
+            }
+          })
+        })
+
+        return aggregator
+      })
+  }
 }

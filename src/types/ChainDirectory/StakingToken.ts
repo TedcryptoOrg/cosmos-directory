@@ -1,3 +1,3 @@
-export type StakingToken = {
-    denom: string,
+export interface StakingToken {
+  denom: string
 }

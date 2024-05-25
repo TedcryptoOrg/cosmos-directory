@@ -1,7 +1,7 @@
-import {Repository} from "../Repository";
-import {Chain} from "./Chain";
+import { type Repository } from '../Repository'
+import { type Chain } from './Chain'
 
-export type ChainResponse = {
-    repository: Repository,
-    chain: Chain,
+export interface ChainResponse {
+  repository: Repository
+  chain: Chain
 }

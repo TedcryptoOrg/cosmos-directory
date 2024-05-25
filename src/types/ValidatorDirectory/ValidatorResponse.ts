@@ -1,7 +1,7 @@
-import {Repository} from "../Repository";
-import {Validator} from "./Validator";
+import { type Repository } from '../Repository'
+import { type Validator } from './Validator'
 
-export type ValidatorResponse = {
-    repository: Repository,
-    validator: Validator,
+export interface ValidatorResponse {
+  repository: Repository
+  validator: Validator
 }
