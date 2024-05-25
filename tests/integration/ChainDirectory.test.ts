@@ -49,6 +49,10 @@ describe('Integrate test ChainDirectory', () => {
                     'svg': 'https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.svg',
                 },
                 'name': 'Cosmos Hub Atom',
+                "socials": {
+                    "twitter": "https://twitter.com/cosmoshub",
+                    "website": "https://cosmos.network",
+                },
                 'symbol': 'ATOM',
             }
         );
