@@ -1,9 +1,9 @@
-import { type Fee } from './Fee'
-import { type StakingToken } from './StakingToken'
-import { type Peer } from './Peer'
-import { type Explorer } from './Explorer'
-import { type Params } from './Params'
-import { type Asset } from './Asset'
+import type { Fee } from './Fee'
+import type { StakingToken } from './StakingToken'
+import type { Peer } from './Peer'
+import type { Explorer } from './Explorer'
+import type { Params } from './Params'
+import type { Asset } from './Asset'
 
 export interface Chain {
   name: string

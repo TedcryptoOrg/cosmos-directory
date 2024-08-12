@@ -1,18 +1,18 @@
 import BaseDirectory from './BaseDirectory'
 import axios from 'axios'
-import { type ValidatorsResponse } from './types/ValidatorDirectory/ValidatorsResponse'
-import { type ValidatorResponse } from './types/ValidatorDirectory/ValidatorResponse'
-import { type ChainValidatorResponse } from './types/ValidatorDirectory/ChainValidatorResponse'
-import { type ValidatorChain } from './types/ValidatorDirectory/ValidatorChain'
-import { type Validator } from './types/ValidatorDirectory/Validator'
-import { type Restake } from './types/ValidatorDirectory/Restake'
+import type { ValidatorsResponse } from './types/ValidatorDirectory/ValidatorsResponse'
+import type { ValidatorResponse } from './types/ValidatorDirectory/ValidatorResponse'
+import type { ChainValidatorResponse } from './types/ValidatorDirectory/ChainValidatorResponse'
+import type { ValidatorChain } from './types/ValidatorDirectory/ValidatorChain'
+import type { Validator } from './types/ValidatorDirectory/Validator'
+import type { Restake } from './types/ValidatorDirectory/Restake'
 
 type Aggregator = Record<string, Record<string, Restake>>
 
 export default class ValidatorsDirectory extends BaseDirectory {
   private readonly url: string
 
-  constructor (testnet: boolean = false) {
+  constructor (testnet = false) {
     super(testnet)
 
     this.url = this.protocol + '://validators.' + this.domain
@@ -32,7 +32,7 @@ export default class ValidatorsDirectory extends BaseDirectory {
       .then(res => res.data)
   }
 
-  async getOperatorAddresses (): Promise<any> {
+  async getOperatorAddresses (): Promise<object> {
     return await this.getAllValidators()
       .then(data => data.validators ?? [])
       .then(data => {
