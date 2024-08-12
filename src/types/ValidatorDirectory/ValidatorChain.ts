@@ -1,5 +1,5 @@
-import { type ValidatorSlash } from './ValidatorSlash'
-import { type Restake } from './Restake'
+import type { ValidatorSlash } from './ValidatorSlash'
+import type { Restake } from './Restake'
 
 export interface ValidatorChain {
   name: string

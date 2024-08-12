@@ -1,7 +1,7 @@
 import BaseDirectory from './BaseDirectory'
 
 export default class CosmosDirectory extends BaseDirectory {
-  constructor (testnet: boolean = false) {
+  constructor (testnet = false) {
     super(testnet)
   }
 

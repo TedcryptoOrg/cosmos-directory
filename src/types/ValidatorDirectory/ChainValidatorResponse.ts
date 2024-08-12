@@ -1,4 +1,4 @@
-import { type ValidatorChain } from './ValidatorChain'
+import type { ValidatorChain } from './ValidatorChain'
 
 export interface ChainValidatorResponse {
   name: string
