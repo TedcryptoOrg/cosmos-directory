@@ -37,6 +37,13 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.0.0"
   },
+  "exports": {
+    ".": {
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js",
+      "types": "./lib/cjs/types/index.d.ts"
+    }
+  },
   "files": [
     "lib/**/*"
   ]
