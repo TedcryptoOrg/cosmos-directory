@@ -59,6 +59,7 @@ describe('Integrate test ChainDirectory', () => {
                     "website": "https://cosmos.network",
                 },
                 'symbol': 'ATOM',
+                'type_asset': 'sdk.coin',
             }
         );
     });

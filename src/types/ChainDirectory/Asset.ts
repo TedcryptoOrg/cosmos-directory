@@ -2,6 +2,7 @@ export interface Asset {
   name: string
   description: string
   symbol: string
+  type_asset?: string
   denom: string
   decimals: number
   coingecko_id: string

@@ -1,8 +1,6 @@
 import BaseDirectory from './BaseDirectory'
 import axios from 'axios'
-import type { ChainResponse } from './types/ChainDirectory/ChainResponse'
-import type { ChainsResponse } from './types/ChainDirectory/ChainsResponse'
-import type { AssetsResponse } from './types/ChainDirectory/AssetsResponse'
+import type { ChainResponse, ChainsResponse, AssetsResponse } from './types'
 
 export default class ChainDirectory extends BaseDirectory {
   private readonly url: string
